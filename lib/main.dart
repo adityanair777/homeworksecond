@@ -50,11 +50,47 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Chatboards',
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF1976D2), Color(0xFF64B5F6)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              CircleAvatar(
+                radius: 36,
+                backgroundColor: Colors.white,
+                child: Icon(Icons.forum, size: 40, color: Color.fromARGB(255, 42, 124, 207)),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Chatboards',
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(height: 6),
+              Text(
+                'Homework 2',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white70,
+                ),
+              ),
+              SizedBox(height: 20),
+              CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -223,10 +259,23 @@ class BoardsHome extends StatelessWidget {
   const BoardsHome({super.key});
 
   static final boards = <Board>[
-    Board(id: 'general', title: 'General', icon: Icons.forum),
-    Board(id: 'school', title: 'School', icon: Icons.school),
-    Board(id: 'tech', title: 'Tech', icon: Icons.memory),
+    Board(
+      id: 'general',
+      title: 'General',
+      icon: Icons.chat_bubble_outline_rounded,
+    ),
+    Board(
+      id: 'school',
+      title: 'School',
+      icon: Icons.menu_book_rounded,
+    ),
+    Board(
+      id: 'tech',
+      title: 'Tech',
+      icon: Icons.developer_board_rounded,
+    ),
   ];
+
 
   @override
   Widget build(BuildContext context) {
